@@ -1,14 +1,16 @@
 package hackathon.ra.run;
 
+import hackathon.ra.controller.SingerController;
+import hackathon.ra.controller.SongController;
 import hackathon.ra.model.Singer;
 import hackathon.ra.model.Song;
 import hackathon.ra.service.SearchService;
-import hackathon.ra.service.SingerService;
 import hackathon.ra.service.SongService;
 
 import java.util.Scanner;
 
 public class MusicManagement {
+
 
     public static final int size = 100;
 
@@ -21,8 +23,10 @@ public class MusicManagement {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        SingerService singerService = new SingerService();
-        SongService songService = new SongService();
+
+        SingerController singerController = new SingerController();
+        SongController songController = new SongController();
+
         SearchService searchService = new SearchService();
 
         do {
@@ -39,11 +43,11 @@ public class MusicManagement {
                 switch (choice) {
                     case 1:
                         Console.message("(1). Quản lý ca sĩ ... \n\n");
-                        singerService.management(scanner, singers, songs);
+                        singerController.management(scanner, singers, songs);
                         break;
                     case 2:
                         Console.message("(2). Quản lý bài hát ... \n\n");
-                        songService.management(scanner, songs, singers);
+                        songController.management(scanner, songs, singers);
                         break;
                     case 3:
                         Console.message("(3). Tìm kiếm bài hát ... \n\n");
